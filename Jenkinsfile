@@ -15,7 +15,7 @@ pipeline {
     stage('test') {
       steps {
 			sh '''
-				source .venv/bin/activate
+				. .venv/bin/activate
 				pytest --junit-xml test-reports/results.xml code/flask_app_test.py
 				
 			'''
