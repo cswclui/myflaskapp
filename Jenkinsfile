@@ -3,17 +3,23 @@ pipeline {
   stages {
     stage('build') {
       steps {
-		   sh 'python -m venv .venv'
-		   sh '. .venv/bin/activate'
-		   sh 'pip install -r requirements.txt'
-		
+			sh 'python -m venv .venv'
+			sh '''
+				. .venv/bin/activate
+				pip install -r requirements.txt
+			
+			'''
       
       }
     }
     stage('test') {
       steps {
-		   sh '. .venv/bin/activate'
-		   sh 'pytest --junit-xml test-reports/results.xml application_test.py'       
+			sh '''
+				source .venv/bin/activate
+				pytest --junit-xml test-reports/results.xml code/flask_app_test.py
+				
+			'''
+       
       }
       post {
         always {
