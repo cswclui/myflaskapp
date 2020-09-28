@@ -3,12 +3,15 @@ pipeline {
   stages {
     stage('build') {
       steps {
-			sh 'python -m venv .venv'
+	      dir('d:/workingdir) {
+		      sh 'python -m venv .venv'
 			sh '''
 				. .venv/bin/activate
 				pip install -r requirements.txt
 			
 			'''
+	      }
+			
       
       }
     }
