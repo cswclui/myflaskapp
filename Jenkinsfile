@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-	      dir('d:/workingdir) {
+	      dir('d:/workingdir') {
 		      sh 'python -m venv .venv'
 			sh '''
 				. .venv/bin/activate
